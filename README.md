@@ -5,7 +5,7 @@ Estudos de Java 11 baseados no livro **OCP Complete Study Guide**
 ## Capítulo 14
 ### Working with Generics
 
-Genéricos surgiram para forçar que se trabalhe com apenas um tipo de dado, como por exemplo:
+Genéricos surgiram para que o programador consiga parametrizar o tipo de dado com que ele deseja trabalhar. Por exemplo, a interface `List` por ser parametrizada como se segue:
 ```java
 List<String> names = new ArrayList<>(); // só pode receber strings
 names.add("Peter Parker"); // ok
@@ -14,8 +14,33 @@ names.add(new StringBuilder("Webbi")); // não compila
 
 Convenção de nomes para *Generics*:
 * `E` para um elemento;
-* `K` para key de map;
-* `V` para valor de map;
+* `K` para key de um map;
+* `V` para valor de um map;
 * `N` para um número;
 * `T` para um tipo de dado genérico;
 * `S`, `U`, `V` e assim por diante, para múltiplos tipos genéricos.
+
+Por baixo dos panos o compilador substitui as referências genéricas por um `Object`. Quando fazemos:
+```java
+public class Crate<T> {
+    private T content;
+    public T emptyCrate() {
+        return content;
+    }
+}
+```
+o compilador na verdade está fazendo:
+```java
+public class Crate {
+    private Object content;
+    public Object emptyCrate() {
+        return content;
+    }
+}
+```
+e add os necessários *casts* para o código funcionar:
+```java
+// Robot é uma classe definida qualquer
+Crate<Robot> crate = new Crate<>();
+Robot r = (Robot) crate.emptyCrate(); // (Robot) é add implicitamente pelo compilador 
+```
