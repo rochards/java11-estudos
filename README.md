@@ -71,3 +71,19 @@ Você pode implementar essa interface de duas formas:
       void ship(T t) { /*...*/ }
   }
   ```
+
+#### Métodos genéricos
+
+Antes do retorno do método, nós formalmente declaramos o tipo genérico `<T>` (lembrando que pode ser qualquer letra).
+```java
+public class Handler {
+    public static <T> void prepare(T t) { 
+        // ... 
+    }
+    public static <T> Crate<T> ship(T t) {
+        // ...
+        // Crate é uma classe qualquer
+        return new Crate<T>();
+    }
+}
+```
