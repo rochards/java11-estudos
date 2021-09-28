@@ -48,3 +48,26 @@ Robot r = (Robot) crate.emptyCrate(); // (Robot) é add implicitamente pelo comp
 ```
 
 #### Interfaces genéricas
+
+```java
+public interface Shippable<T> {
+    void ship(T t);
+}
+```
+
+Você pode implementar essa interface de duas formas:
+* Ex1. com uma classe concreta:
+  ```java
+  // Robot abaixo seria uma classe qualquer
+  public class ShippableRobotCrate implements Shippable<Robot> {
+      void ship(Robot t) { /*...*/ }
+  }
+  ```
+  * Ex2. com uma classe abstrata:
+  ```java
+  // não compila se você não parametrizar tbm ShippableCrate
+  public abstract class ShippableCrate<T> implements Shippable<T> {
+      @Override
+      void ship(T t) { /*...*/ }
+  }
+  ```
