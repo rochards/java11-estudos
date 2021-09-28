@@ -63,7 +63,7 @@ Você pode implementar essa interface de duas formas:
       void ship(Robot t) { /*...*/ }
   }
   ```
-  * Ex2. com uma classe abstrata:
+* Ex2. com uma classe abstrata:
   ```java
   // não compila se você não parametrizar tbm ShippableCrate
   public abstract class ShippableCrate<T> implements Shippable<T> {
