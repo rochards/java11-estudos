@@ -7,7 +7,7 @@ Estudos de Java 11 baseados no livro **OCP Complete Study Guide**
 
 Genéricos surgiram para que o programador consiga parametrizar o tipo de dado com que ele deseja trabalhar. Por exemplo, a interface `List` por ser parametrizada como se segue:
 ```java
-List<String> names = new ArrayList<>(); // só pode receber strings
+List<String> names = new ArrayList<>(); // só vai poder receber strings
 names.add("Peter Parker"); // ok
 names.add(new StringBuilder("Webbi")); // não compila
 ```
@@ -19,6 +19,8 @@ Convenção de nomes para *Generics*:
 * `N` para um número;
 * `T` para um tipo de dado genérico;
 * `S`, `U`, `V` e assim por diante, para múltiplos tipos genéricos.
+
+#### Classes genéricas
 
 Por baixo dos panos o compilador substitui as referências genéricas por um `Object`. Quando fazemos:
 ```java
@@ -44,3 +46,5 @@ e add os necessários *casts* para o código funcionar:
 Crate<Robot> crate = new Crate<>();
 Robot r = (Robot) crate.emptyCrate(); // (Robot) é add implicitamente pelo compilador 
 ```
+
+#### Interfaces genéricas
