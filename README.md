@@ -90,7 +90,7 @@ O livro descreve que um *bounded parameter type* é um tipo genérico que especi
 O _**wildcard generic type**_ é representado pelo sinal de interrogação `?`.
 
 Tipos de bounds:
-| Type of bound | Syntax | Example |
+| Tipo de bound | Sintaxe | Examplo |
 | ------------- | ------ | ------- |
 | Unbounded wildcard | `?` | `List<?> l = new ArrayList<String>();` |
 | Wildcard with an upper bound | `? extends type` | `List<? extends Exception> l = new ArrayList<RuntimeException>();` |
