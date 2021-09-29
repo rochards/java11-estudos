@@ -1,5 +1,5 @@
 # Estudos de Java 11
-Estudos de Java 11 baseados no livro **OCP Complete Study Guide**
+Estudos de Java 11 baseados no livro **OCP Complete Study Guide**. Os títulos e subtítulos do livro foram mantidos em inglês para fácil localização no livro.
 
 
 ## Capítulo 14
@@ -20,7 +20,7 @@ Convenção de nomes para *Generics*:
 * `T` para um tipo de dado genérico;
 * `S`, `U`, `V` e assim por diante, para múltiplos tipos genéricos.
 
-#### Classes genéricas
+#### Generics Classes
 
 Por baixo dos panos o compilador substitui as referências genéricas por um `Object`. Quando fazemos:
 ```java
@@ -47,7 +47,7 @@ Crate<Robot> crate = new Crate<>();
 Robot r = (Robot) crate.emptyCrate(); // (Robot) é add implicitamente pelo compilador 
 ```
 
-#### Interfaces genéricas
+#### Generic Interfaces
 
 ```java
 public interface Shippable<T> {
@@ -72,7 +72,7 @@ Você pode implementar essa interface de duas formas:
   }
   ```
 
-#### Métodos genéricos
+#### Generic Methods
 
 Antes do retorno do método, nós formalmente declaramos o tipo genérico `<T>` (*formal parameter type*). Lembrando que `<T>` pode ser qualquer letra.
 ```java
@@ -82,3 +82,16 @@ public class More {
     public static T noGood(T t) { return t; } // não compila pq o tipo genérico <T> não foi especificado
 }
 ```
+
+#### Bounding Generic Types
+
+O livro descreve que um *bounded parameter type* é um tipo genérico que especifica uma restrição para os tipos de classes que determinado atributo `T` pode receber. 
+
+O _**wildcard generic type**_ é representado pelo sinal de interrogação `?`.
+
+Tipos de bounds:
+| Type of bound | Syntax | Example |
+| ------------- | ------ | ------- |
+| Unbounded wildcard | `?` | `List<?> l = new ArrayList<String>();` |
+| Wildcard with an upper bound | `? extends type` | `List<? extends Exception> l = new ArrayList<RuntimeException>();` |
+| Wildcard with a lower bound | `? super type` | `List<? super Exception> l = new ArrayList<Object>();` |
