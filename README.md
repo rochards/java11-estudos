@@ -74,16 +74,11 @@ Você pode implementar essa interface de duas formas:
 
 #### Métodos genéricos
 
-Antes do retorno do método, nós formalmente declaramos o tipo genérico `<T>` (lembrando que pode ser qualquer letra).
+Antes do retorno do método, nós formalmente declaramos o tipo genérico `<T>` (*formal parameter type*). Lembrando que `<T>` pode ser qualquer letra.
 ```java
-public class Handler {
-    public static <T> void prepare(T t) { 
-        // ... 
-    }
-    public static <T> Crate<T> ship(T t) {
-        // ...
-        // Crate é uma classe qualquer
-        return new Crate<T>();
-    }
+public class More {
+    public static <T> void sink() {/*...*/}
+    public static <T> T identity(T t) { return t; }
+    public static T noGood(T t) { return t; } // não compila pq o tipo genérico <T> não foi especificado
 }
 ```
