@@ -131,7 +131,7 @@ public static void main(String[] args) {
 Obs.: no exemplo abaixo as duas declarações não são equivalentes:
 ```java
 List<?> x1 = new ArrayList<>(); // x1 é do tipo List
-var     x2 = new ArrayList<>(); // x1 é do tipo ArrayList
+var     x2 = new ArrayList<>(); // x2 é do tipo ArrayList
 ```
 
 ##### Upper-Bounded Wildcards
