@@ -20,7 +20,7 @@ Convenção de nomes para *Generics*:
 * `T` para um tipo de dado genérico;
 * `S`, `U`, `V` e assim por diante, para múltiplos tipos genéricos.
 
-#### Generics Classes
+#### Generic Classes
 
 Por baixo dos panos o compilador substitui as referências genéricas por um `Object`. Quando fazemos:
 ```java
@@ -95,3 +95,19 @@ Tipos de bounds:
 | Unbounded wildcard | `?` | `List<?> l = new ArrayList<String>();` |
 | Wildcard with an upper bound | `? extends type` | `List<? extends Exception> l = new ArrayList<RuntimeException>();` |
 | Wildcard with a lower bound | `? super type` | `List<? super Exception> l = new ArrayList<Object>();` |
+
+
+##### Unbounded Wildcards
+
+Representa qualquer tipo de dado. Vamos a um exemplo:
+```java
+public static void printList(List<Object> list) {
+    for (Object x : list)
+        System.out.println(x);
+}
+public static void main(String[] args) {
+    List<String> keywords = new ArrayList<>();
+    keywords.add("java");
+    printList(keywords); /* não compila. Apesar de String ser uma subclass de Object, List<String> != List<Object>. Na chamada de printList(...) estamos tentando fazer List<Object> list = keywords */
+}
+```
