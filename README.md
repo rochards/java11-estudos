@@ -108,6 +108,8 @@ public static void printList(List<Object> list) {
 public static void main(String[] args) {
     List<String> keywords = new ArrayList<>();
     keywords.add("java");
-    printList(keywords); /* não compila. Apesar de String ser uma subclass de Object, List<String> != List<Object>. Na chamada de printList(...) estamos tentando fazer List<Object> list = keywords */
+    printList(keywords); /* não compila. Apesar de String ser uma subclass de Object,
+     List<String> != List<Object>. Na chamada de printList(...) estamos tentando fazer 
+     List<Object> list = keywords */
 }
 ```
