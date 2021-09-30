@@ -11,6 +11,7 @@ List<String> names = new ArrayList<>(); // só vai poder receber strings
 names.add("Peter Parker"); // ok
 names.add(new StringBuilder("Webbi")); // não compila
 ```
+*Generics* não aceita tipos primitos. Ex.: `List<int> numbers` não compila.
 
 Convenção de nomes para *Generics*:
 * `E` para um elemento;
@@ -109,7 +110,28 @@ public static void main(String[] args) {
     List<String> keywords = new ArrayList<>();
     keywords.add("java");
     printList(keywords); /* não compila. Apesar de String ser uma subclass de Object,
-     List<String> != List<Object>. Na chamada de printList(...) estamos tentando fazer 
-     List<Object> list = keywords */
+    List<String> != List<Object>. Na chamada de printList(...) estamos tentando fazer 
+    List<Object> list = keywords */
 }
 ```
+Para resolver o problema acima podemos fazer uso do caracter `?`:
+```java
+// agora lista pode receber qualquer classe.
+public static void printList(List<?> list) {
+    for (Object x : list)
+        System.out.println(x);
+}
+public static void main(String[] args) {
+    List<String> keywords = new ArrayList<>();
+    keywords.add("java");
+    printList(keywords); // ok
+}
+```
+
+Obs.: no exemplo abaixo as duas declarações não são equivalentes:
+```java
+List<?> x1 = new ArrayList<>(); // x1 é do tipo List
+var     x2 = new ArrayList<>(); // x1 é do tipo ArrayList
+```
+
+##### Upper-Bounded Wildcards
