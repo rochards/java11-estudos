@@ -135,3 +135,49 @@ var     x2 = new ArrayList<>(); // x2 é do tipo ArrayList
 ```
 
 ##### Upper-Bounded Wildcards
+
+Vamos a uma tentativa de criar uma lista de números:
+```java
+List<Number> list = new ArrayList<Integer>(); // não compila, pelo motivo que já vimos acima
+```
+para resolver o problema acima podemos utilizar o *upper-bounded wildcard*:
+```java
+List<? extends Number> = new ArrayList<Integer>(); // ok
+```
+acima estamos dizendo que qualquer classe que `extends` de `Number` ou a própria `Number` pode ser utilizada como parâmetro do *generics*.
+
+Mais exemplos:
+<table>
+<tr>
+<th>O que está escrito</th>
+<th>O que o compilador do Java faz</th>
+</tr>
+<tr>
+<td>
+
+```java
+public static long total(List<? extends Number> list) {
+    long count = 0;
+    for (Number number : list)
+        count += number.longValue();
+    return count;
+}
+```
+
+</td>
+<td>
+
+```java
+public static long total(List list) {
+    long count = 0;
+    for (Object obj : list) {
+        Number number = (Number) obj;
+        count += number.longValue();
+    }
+    return count;
+}
+```
+
+</td>
+</tr>
+</table>
