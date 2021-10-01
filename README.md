@@ -142,9 +142,16 @@ List<Number> list = new ArrayList<Integer>(); // não compila, pelo motivo que j
 ```
 para resolver o problema acima podemos utilizar o *upper-bounded wildcard*:
 ```java
-List<? extends Number> = new ArrayList<Integer>(); // ok
+List<? extends Number> list = new ArrayList<Integer>(); // ok
 ```
 acima estamos dizendo que qualquer classe que `extends` de `Number` ou a própria `Number` pode ser utilizada como parâmetro do *generics*.
+
+**Obs.:** trabalhar com listas com *upper-bounded* ou *unbounded* wildcard, a torna imutável, ou seja, uma vez inicializada vc não consegue adicionar nem remover elementos:
+```java
+List<? extends Number> list = List.of(1, 2, 5);; // ok
+list.add(20); // não compila
+list.remove(2); // em tempo de execução lança uma UnsupportedOperationException
+```
 
 Mais exemplos:
 <table>
