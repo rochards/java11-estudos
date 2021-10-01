@@ -146,45 +146,10 @@ List<? extends Number> list = new ArrayList<Integer>(); // ok
 ```
 acima estamos dizendo que qualquer classe que `extends` de `Number` ou a própria `Number` pode ser utilizada como parâmetro do *generics*.
 
-**Obs.:** trabalhar com listas com *upper-bounded* ou *unbounded* wildcard, a torna imutável, ou seja, uma vez inicializada vc não consegue adicionar nem remover elementos:
+**Obs.:** trabalhar com listas com *upper-bounded* ou *unbounded wildcard*, **a torna imutável**, ou seja, uma vez inicializada vc não consegue adicionar nem remover elementos:
 ```java
-List<? extends Number> list = List.of(1, 2, 5);; // ok
+List<? extends Number> list = List.of(1, 2, 5); // ok
 list.add(20); // não compila
-list.remove(2); // em tempo de execução lança uma UnsupportedOperationException
+list.remove(2); // compila, mas em tempo de execução lança uma UnsupportedOperationException
 ```
-
-Mais exemplos:
-<table>
-<tr>
-<th>O que está escrito</th>
-<th>O que o compilador do Java faz</th>
-</tr>
-<tr>
-<td>
-
-```java
-public static long total(List<? extends Number> list) {
-    long count = 0;
-    for (Number number : list)
-        count += number.longValue();
-    return count;
-}
-```
-
-</td>
-<td>
-
-```java
-public static long total(List list) {
-    long count = 0;
-    for (Object obj : list) {
-        Number number = (Number) obj;
-        count += number.longValue();
-    }
-    return count;
-}
-```
-
-</td>
-</tr>
-</table>
+##### Lower-Bounded Wildcards
