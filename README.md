@@ -11,7 +11,7 @@ List<String> names = new ArrayList<>(); // só vai poder receber strings
 names.add("Peter Parker"); // ok
 names.add(new StringBuilder("Webbi")); // não compila
 ```
-*Generics* não aceita tipos primitos. Ex.: `List<int> numbers` não compila.
+*Generics* não aceita tipos primitivos. Ex.: `List<int> numbers` não compila.
 
 Convenção de nomes para *Generics*:
 * `E` para um elemento;
@@ -78,7 +78,7 @@ Você pode implementar essa interface de duas formas:
 Antes do retorno do método, nós formalmente declaramos o tipo genérico `<T>` (*formal parameter type*). Lembrando que `<T>` pode ser qualquer letra.
 ```java
 public class More {
-    public static <T> void sink() {/*...*/}
+    public static <T> void sink(T t) {/*...*/}
     public static <T> T identity(T t) { return t; }
     public static T noGood(T t) { return t; } // não compila pq o tipo genérico <T> não foi especificado
 }
