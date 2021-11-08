@@ -154,3 +154,13 @@ list.remove(2); // ok, remover é permitido
 ```
 ##### Lower-Bounded Wildcards
 
+Utilizar *lower-bounded* resolve o problema da imutabilidade. 
+```java
+List<? super Integer> numbers = new ArrayList<>();
+numbers.add(12); // ok
+
+Object number = 12;
+Object string = "doze";
+numbers.add(number); // não compila pq o compilador não sabe se realmente é um Integer
+numbers.add(string); // aí que não compila msm
+```
