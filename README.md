@@ -16,7 +16,7 @@ Collections*:
 
 Observe na figura abaixo o diagrama de herança entre essas interfaces no Java e algumas classes que as implementam
 
-![Collections](/images/14-1 - collection-interfaces.svg)
+![collections interfaces](images/fig-14.1-collection-interfaces.svg)
 
 ### Working with Generics
 
