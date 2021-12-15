@@ -3,6 +3,21 @@ Estudos de Java 11 baseados no livro **OCP Complete Study Guide**. Os títulos e
 
 
 ## Capítulo 14
+
+### Using Lists, Sets, Maps and Queues
+
+Uma *collection* é um objeto que agrupa outros objetos. Há quatro principais interfaces no *Framework* de  *Java 
+Collections*:
+* **List** — *collection* ordernada de elementos que permite entradas duplicadas;
+* **Set** — *collection* de elementos que não permite duplicados;
+* **Queue** — *collection* que organiza seus elementos numa ordem específica. Uma forma comum de uma *queue* 
+  processar seus elementos é *first-in*, *first-out*;
+* **Map** — *collection* que mapeia chaves, não duplicadas, para valores
+
+Observe na figura abaixo o diagrama de herança entre essas interfaces no Java e algumas classes que as implementam
+
+![Collections](/images/14-1 - collection-interfaces.svg)
+
 ### Working with Generics
 
 Genéricos surgiram para que o programador consiga parametrizar o tipo de dado com que ele deseja trabalhar. Por exemplo, a interface `List` por ser parametrizada como se segue:
