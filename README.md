@@ -18,6 +18,35 @@ Observe na figura abaixo o diagrama de herança entre essas interfaces no Java e
 
 ![collections interfaces](images/fig-14.1-collection-interfaces.svg)
 
+> `Map` não implementa `Collection`, mas continua sendo uma *collection* no sentido de que agrupa elementos
+
+Primeiro vamos listar quais são os métodos declarados em `Collection`, consequentemente comum a todas as 
+classes/interfaces que a implementam.
+
+#### Common Collections Methods
+O letra `E` que aparecerá nas assinaturas dos métodos abaixo, indica apenas um elemento genérico. Você pode saber 
+mais na seção **Working with Generics**. Abaixo não estão listados todos os métodos da interface `Collection`, 
+apenas os mais usuais.
+
+* **add** — adiciona um novo elemento;
+  * Assinatura: `boolean add(E element)`
+* **remove** — remove um único elemento;
+  * Assinatura: `boolean remove(Object object)`
+* **isEmpty** — verifica se a *collection* está vazia;
+  * Assinatura: `boolean isEmpty()`
+* **size** — retorna a quantidade de elementos;
+  * Assinatura: `int size()`
+* **clear** — remove todos os elementos da *collection*;
+  * Assinatura: `void clear()`
+* **contains** — verifica se determinando elemento está na *collection*;
+  * Assinatura: `boolean contains(Object object)`
+* **removeIf** — remove todos os elementos cuja condição especificada é verdadeira;
+  * Assinatura: `boolean removeIf(Predicate<? super E> filter)`
+* **forEach** — itera por todos os elementos da *collection*. Uma observação a ser colocada aqui é que esse é um 
+  método `default` da interface `Iterable`, que é estendida por `Collection`;
+  * Assinatura: `void forEach(Consumer<? super T> action)`
+
+
 ### Working with Generics
 
 Genéricos surgiram para que o programador consiga parametrizar o tipo de dado com que ele deseja trabalhar. Por exemplo, a interface `List` por ser parametrizada como se segue:
