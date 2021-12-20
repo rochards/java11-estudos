@@ -49,6 +49,41 @@ apenas os mais usuais.
 > outros que estão parametrizados. Isso significa que você pode instanciar `Collection<String>`, mas passar 
 > qualquer objeto para os métodos citados acima que não receberá erro de compilação ou execução.
 
+#### Using the `List` Interface 
+Uma lista é uma *collection* que permite **elementos duplicados e são ordenados**. Cada elemento possui um index, e os 
+indexes começam em zero.
+
+Das implementações de lista citadas na figura anterior, temos
+- `ArrayList`:
+  - é um *array* redimensionável;
+  - o tempo que leva para acessar qualquer elemento é sempre o mesmo, ou seja, constante (*constant time*);
+  - adicionar e remover elementos é uma operação mais lenta do que lê-los;
+- `LinkedList`:
+  - para elementos no começo ou no final da lista, ler, adicionar ou remover é em tempo constante;
+  - para posições diferentes das citas acima, quanto maior for o index do elemento, maior tempo para acessá-lo
+
+Criando `List` com métodos fábrica (*Factory methods*)
+
+| Método                    | Descrição                                                       | Add elemento? | Substituir elemento? | Excluir elemento? |
+|---------------------------|-----------------------------------------------------------------|:-------------:|:--------------------:|:-----------------:|
+| `Arrays.asList(varargs)`  | Retorna uma lista que referencia um *array* não redimensionável |      Não      |         Sim          |        Não        |
+| `List.of(varargs)`        | Retorna uma lista imutável                                      |      Não      |         Não          |        Não        |
+| `List.copyOf(collection)` | Retorna uma lista imutável                                      |      Não      |         Não          |        Não        |
+> Se você utilizar algum método que tente add ou remover elementos das listas, receberá em tempo de execução uma 
+> `UnsupportedOperationException`. Para as imutáveis, substituir também lança a mesma exceção.
+
+Em se tratando dos métodos da interface `List`, adicionamente a aqueles já definidos em `Collection`, temos
+- `void add(int index, E element)` — **add** elemento na posição indicada e desloca os demais;
+- `E set(int index, E element)` — **substitui** o elemento na posição indicada por um novo;
+- `E get(int index)` — retorna o elemento da posição indica;
+- `E remove(int index)` — remove o elemento da posição indicada e desloca os demais;
+- `void replaceAll(UnaryOperator<E> op` — aplica em todos os elementos a operação indicada;
+> Atenção ao usar `add(int, E)` e `set(int, E)`. Considere `List<String> list = new ArrayList<>()` para o nosso 
+> exemplo e que as operações realizadas abaixo **não são realizadas em sequência**:
+> `list.add(1, "Book")` — lança `IndexOutOfBoundsException` em tempo de execução, pois o tamanho da lista é zero; 
+> `list.add(0, "Book")` — ok;
+> `list.set(0, "Book")` — lança `IndexOutOfBoundsException` em tempo de execução, pois o tamanho da lista é zero;
+
 ### Working with Generics
 
 Genéricos surgiram para que o programador consiga parametrizar o tipo de dado com que ele deseja trabalhar. Por exemplo, a interface `List` por ser parametrizada como se segue:
