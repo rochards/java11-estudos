@@ -76,6 +76,32 @@ Em se tratando dos métodos da interface `List`, adicionamente a aqueles já def
 > - `list.set(0, "Book")` — lança `IndexOutOfBoundsException` em tempo de execução, pois o tamanho da lista é zero;
 > - `list.remove(0)` — também lança `IndexOutOfBoundsException` pelo motivo já citado acima.
 
+#### Using the `Set` Interface
+`Set` define uma *collection* que não permite elementos duplicados.
+
+Das implementações de `Set` citadas no diagrama de herança, temos
+* `HashSet`:
+  * armazena seus elementos em uma *hash table* utilizando o método `hashCode()` de cada objeto como *key*;
+  * add ou verificar a existência de um elemento acontece em tempo constante, independente do tamanho da 
+    *collection* ou posição do elemento nela;
+  * você não consegue ordenar os elementos.
+* `TreeSet`:
+  * armazena seus elementos ordenados numa estrutura de árvore (*tree*);
+  * o tempo para verificar a exitência de um elemento é maior que num `HashSet` e piora conforme a *collection* cresce;
+> Para que `TreeSet` ordene os elementos corretamente, a classe que originou o elemento/objeto ou sua superclasse deve 
+> implementar a interface `Comparable`. 
+
+Na figura abaixo temos uma representação visual de como as classes acima armazenariam seus elementos
+![HashSet e TreeSet](images/fig-14.5-hashset-treeset.svg)
+
+Criando `Set` com métodos fábrica (*Factory methods*)
+
+| Método                   | Descrição               | Add elemento? | Substituir elemento? | Excluir elemento? |
+|--------------------------|-------------------------|:-------------:|:--------------------:|:-----------------:|
+| `Set.of(varargs)`        | Retorna um Set imutável |      Não      |         Não          |        Não        |
+| `Set.copyOf(collection)` | Retorna um Set imutável |      Não      |         Não          |        Não        |
+
+
 ### Working with Generics
 
 Genéricos surgiram para que o programador consiga parametrizar o tipo de dado com que ele deseja trabalhar. Por exemplo, a interface `List` por ser parametrizada como se segue:
