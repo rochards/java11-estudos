@@ -45,7 +45,9 @@ apenas os mais usuais.
 * **forEach** — itera por todos os elementos da *collection*. Uma observação a ser colocada aqui é que esse é um 
   método `default` da interface `Iterable`, que é estendida por `Collection`;
   * Assinatura: `void forEach(Consumer<? super T> action)`
-
+> É interessante notar que os métodos `remove` e `contains` recebem um `Object` como parâmetro, diferentemente dos 
+> outros que estão parametrizados. Isso significa que você pode instanciar `Collection<String>`, mas passar 
+> qualquer objeto para os métodos citados acima que não receberá erro de compilação ou execução.
 
 ### Working with Generics
 
