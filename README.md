@@ -63,7 +63,7 @@ Criando `List` com métodos fábrica (*Factory methods*)
 > Se você utilizar algum método que tente add ou remover elementos das listas, receberá em tempo de execução uma 
 > `UnsupportedOperationException`. Para as imutáveis, substituir também lança a mesma exceção.
 
-Em se tratando dos métodos da interface `List`, adicionamente a aqueles já definidos em `Collection`, temos
+Em se tratando dos métodos da interface `List`, adicionamente a aqueles já definidos em `Collection`, temos:
 - `void add(int index, E element)` — **add** elemento na posição indicada e desloca os demais;
 - `E set(int index, E element)` — **substitui** o elemento na posição indicada por um novo;
 - `E get(int index)` — retorna o elemento da posição indica;
@@ -74,6 +74,7 @@ Em se tratando dos métodos da interface `List`, adicionamente a aqueles já def
 > - `list.add(1, "Book")` — lança `IndexOutOfBoundsException` em tempo de execução, pois o tamanho da lista é zero; 
 > - `list.add(0, "Book")` — ok;
 > - `list.set(0, "Book")` — lança `IndexOutOfBoundsException` em tempo de execução, pois o tamanho da lista é zero;
+> - `list.remove(0)` — também lança `IndexOutOfBoundsException` pelo motivo já citado acima.
 
 ### Working with Generics
 
