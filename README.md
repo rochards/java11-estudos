@@ -80,9 +80,9 @@ Em se tratando dos métodos da interface `List`, adicionamente a aqueles já def
 - `void replaceAll(UnaryOperator<E> op` — aplica em todos os elementos a operação indicada;
 > Atenção ao usar `add(int, E)` e `set(int, E)`. Considere `List<String> list = new ArrayList<>()` para o nosso 
 > exemplo e que as operações realizadas abaixo **não são realizadas em sequência**:
-> `list.add(1, "Book")` — lança `IndexOutOfBoundsException` em tempo de execução, pois o tamanho da lista é zero; 
-> `list.add(0, "Book")` — ok;
-> `list.set(0, "Book")` — lança `IndexOutOfBoundsException` em tempo de execução, pois o tamanho da lista é zero;
+> - `list.add(1, "Book")` — lança `IndexOutOfBoundsException` em tempo de execução, pois o tamanho da lista é zero; 
+> - `list.add(0, "Book")` — ok;
+> - `list.set(0, "Book")` — lança `IndexOutOfBoundsException` em tempo de execução, pois o tamanho da lista é zero;
 
 ### Working with Generics
 
