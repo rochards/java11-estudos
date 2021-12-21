@@ -63,7 +63,7 @@ Criando `List` com métodos fábrica (*Factory methods*)
 > Se você utilizar algum método que tente add ou remover elementos das listas, receberá em tempo de execução uma 
 > `UnsupportedOperationException`. Para as imutáveis, substituir também lança a mesma exceção.
 
-Em se tratando dos métodos da interface `List`, adicionamente a aqueles já definidos em `Collection`, temos:
+Em se tratando dos métodos da interface `List`, adicionalmente a aqueles já definidos em `Collection`, temos:
 - `void add(int index, E element)` — **add** elemento na posição indicada e desloca os demais;
 - `E set(int index, E element)` — **substitui** o elemento na posição indicada por um novo;
 - `E get(int index)` — retorna o elemento da posição indica;
@@ -101,6 +101,29 @@ Criando `Set` com métodos fábrica (*Factory methods*)
 | `Set.of(varargs)`        | Retorna um Set imutável |      Não      |         Não          |        Não        |
 | `Set.copyOf(collection)` | Retorna um Set imutável |      Não      |         Não          |        Não        |
 
+#### Using the `Queue` Interface
+Uma `Queue` possui um funcionamento padrão de FIFO (*first-in*, *first-out*). Outro modo seria LIFO (*last-in*, 
+*first-out*) que é comumente conhecido como pilha (*stack*). Na figura abaixo temos uma visualização de uma Queue
+
+![Example de Queue](images/fig-14.5-queue.svg)
+
+Das implementações de `Queue` citadas no diagrama de herança, temos
+* `LinkedList`:
+  * é uma fila duplamente terminada, também conhecida como DEQUE (*Double-Ended Queue*) ou ainda fila duplamente 
+    encadeada.
+> A classe `LinkedList` implementa tanto `List` quanto `Queue`, por isso não funciona puramente como uma fila. Caso 
+> sua implementação demande uma eficiência maior, você deve recorrer à classe **`ArrayDeque`**.
+
+Em se tratando dos métodos da interface `Queue`, adicionalmente a aqueles já definidos em `Collection`, temos:
+* `boolean add(E element)` - add um elemento ao final da fila;
+* `boolean offer(E element)` — add um elemento ao final da fila; 
+* `E element()` — **retorna** o próximo elemento da fila; 
+* `E peek()` — **retorna** o próximo elemento ou `null`, caso a fila esteja vazia; 
+* `E remove()` — **remove e retorna** o próximo elemento da fila; 
+* `E poll()` — **remove e retorna** o próximo elemento ou `null`, caso a fila esteja vazia; 
+> Como você percebeu acima, há mais de um método para realizar a mesma operação. A diferença é que os métodos `add`
+> , `element` e `remove` lançam uma exceção quando algo dá errado. Em especial, `element` e `remove` lançam 
+> `NoSuchElementException` quando a fila está vazia.
 
 ### Working with Generics
 
